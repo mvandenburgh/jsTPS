@@ -17,7 +17,7 @@ class jsTPS {
      * Tests to see if the do (i.e. redo) operation is currently being
      * performed. If it is, true is returned, if not, false.
      * 
-     * @return true if the do (i.e. redo) operation is currently in the
+     * @returns true if the do (i.e. redo) operation is currently in the
      * process of executing, false otherwise.
      */
     isPerformingDo() {
@@ -28,7 +28,7 @@ class jsTPS {
      * Tests to see if the undo operation is currently being
      * performed. If it is, true is returned, if not, false.
      * 
-     * @return true if the undo operation is currently in the
+     * @returns true if the undo operation is currently in the
      * process of executing, false otherwise.
      */
     isPerformingUndo() {
@@ -76,7 +76,7 @@ class jsTPS {
      * This function checks to see if there is a transaction to undo. If there
      * is it will return it, if not, it will return null.
      * 
-     * @return The transaction that would be executed if undo is performed, if
+     * @returns The transaction that would be executed if undo is performed, if
      * there is no transaction to undo, null is returned.
      */
     peekUndo() {
@@ -92,7 +92,7 @@ class jsTPS {
      * This function checks to see if there is a transaction to redo. If there
      * is it will return it, if not, it will return null.
      * 
-     * @return The transaction that would be executed if redo is performed, if
+     * @returns The transaction that would be executed if redo is performed, if
      * there is no transaction to undo, null is returned.
      */  
     peekDo() {
@@ -134,11 +134,8 @@ class jsTPS {
      * on the transaction stack. This includes those that may have been
      * done, undone, and redone.
      * 
-     * @return The number of transactions currently in the transaction stack.
+     * @returns The number of transactions currently in the transaction stack.
      */
-    public int getSize() {
-        return this.transactions.size();
-    }
     getSize() {
         return this.transactions.length;
     }
@@ -148,7 +145,7 @@ class jsTPS {
      * transaction stack that can be redone, meaning they have been added
      * and done, and then undone.
      * 
-     * @return The number of transactions in the stack that can be redone.
+     * @returns The number of transactions in the stack that can be redone.
      */
     getRedoSize() {
         return this.getSize() - this.mostRecentTransaction - 1;
@@ -158,12 +155,9 @@ class jsTPS {
      * This method returns the number of transactions currently in the 
      * transaction stack that can be undone.
      * 
-     * @return The number of transactions in the transaction stack that
+     * @returns The number of transactions in the transaction stack that
      * can be undone.
      */
-    public int getUndoSize() {
-        return mostRecentTransaction + 1;
-    }
     getUndoSize() {
         return this.mostRecentTransaction + 1;
     }
