@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jsTPS Unit Tests</title>
+</head>
+
+<body>
+    <div id="testAdd">
+        <h2>Testing Add</h2>
+        <div>Test default num value: <span id="testAdd1"></span></div>
+        <h5>ADD 5 TRANSACTIONS</h5>
+        <div>Test num value: <span id="testAdd2"></span></div>
+        <div>Test tps size: <span id="testAdd3"></span></div>
+        <div>Test tps redo size: <span id="testAdd4"></span></div>
+        <div>Test tps undo size: <span id="testAdd5"></span></div>
+        <h5>ADD 10 TRANSACTIONS</h5>
+        <div>Test num value: <span id="testAdd6"></span></div>
+        <div>Test tps size: <span id="testAdd7"></span></div>
+        <div>Test tps redo size: <span id="testAdd8"></span></div>
+        <div>Test tps undo size: <span id="testAdd9"></span></div>
+        <h5>ADD 15 TRANSACTIONS</h5>
+        <div>Test num value: <span id="testAdd10"></span></div>
+        <div>Test tps size: <span id="testAdd11"></span></div>
+        <div>Test tps redo size: <span id="testAdd12"></span></div>
+        <div>Test tps undo size: <span id="testAdd13"></span></div>
+    </div>
+
+    <div id="testAndMask">
+        <h2>Testing AndMask</h2>
+        <div>Test default num value: <span id="testAndMask1"></span></div>
+        <h5>ADD 5 TRANSACTIONS</h5>
+        <div>Test num value: <span id="testAndMask2"></span></div>
+        <div>Test tps size: <span id="testAndMask3"></span></div>
+        <h5>UNDO TRANSACTION</h5>
+        <div>Test num value: <span id="testAndMask4"></span></div>
+        <div>Test tps size: <span id="testAndMask5"></span></div>
+        <div>Test tps redo size: <span id="testAndMask6"></span></div>
+        <div>Test tps undo size: <span id="testAndMask7"></span></div>
+        
+    </div>
+
+    <script src="jsTPS.js"></script>
+    <script src="js/unit/Num.js"></script>
+    <script src="js/unit/AddToNum_Transaction.js"></script>
+    <script src="js/unit/AndMask_Transaction.js"></script>
+    <script src="js/unit/Unit_Tests.js"></script>
+</body>
+
+</html>

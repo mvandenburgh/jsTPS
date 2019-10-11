@@ -46,15 +46,15 @@ class jsTPS {
      * the transaction processing system stack and executed.
      */
     addTransaction(transaction) {
-        if ((this.mostRecentTransaction < 0) || (this.mostRecentTransaction < (transactions.length - 1))) {
-            for (let i = transactions.length - 1; i > this.mostRecentTransaction; i--) {
+        if ((this.mostRecentTransaction < 0) || (this.mostRecentTransaction < (this.transactions.length - 1))) {
+            for (let i = this.transactions.length - 1; i > this.mostRecentTransaction; i--) {
                 this.transactions.splice(i, 1);
             }
         }
 
         this.transactions.push(transaction);
 
-        doTransaction();
+        this.doTransaction();
     }
 
     /**
@@ -63,7 +63,7 @@ class jsTPS {
      * at the top of the TPS stack or somewhere in the middle (i.e. a redo).
      */
     doTransaction() {
-        if (hasTransactionToRedo()) {
+        if (this.hasTransactionToRedo()) {
             this.performingDo = true;
             let transaction = this.transactions[this.mostRecentTransaction + 1];
             transaction.doTransaction();
@@ -80,7 +80,7 @@ class jsTPS {
      * there is no transaction to undo, null is returned.
      */
     peekUndo() {
-        if (hasTransactionToUndo()) {
+        if (this.hasTransactionToUndo()) {
             return this.transactions[this.mostRecentTransaction];
         }
         else {
@@ -96,7 +96,7 @@ class jsTPS {
      * there is no transaction to undo, null is returned.
      */  
     peekDo() {
-        if (hasTransactionToRedo()) {
+        if (this.hasTransactionToRedo()) {
             return this.transactions[this.mostRecentTransaction + 1];
         }
         else {
@@ -109,10 +109,10 @@ class jsTPS {
      * TPS stack and undoes it, moving the TPS counter accordingly.
      */
     undoTransaction() {
-        if (hasTransactionToUndo()) {
+        if (this.hasTransactionToUndo()) {
             this.performingUndo = true;
-            let transaction = transactions[this.mostRecentTransaction];
-            this.transaction.undoTransaction();
+            let transaction = this.transactions[this.mostRecentTransaction];
+            transaction.undoTransaction();
             this.mostRecentTransaction--;
             this.performingUndo = false;
         }
@@ -194,7 +194,7 @@ class jsTPS {
         text += "--Current Index on Stack: " + this.mostRecentTransaction + "\n";
         text += "--Current Transaction Stack:\n";
         for (let i = 0; i <= this.mostRecentTransaction; i++) {
-            let jt = transactions[i];
+            let jt = this.transactions[i];
             text += "----" + jt + "\n";
         }
         return text;
