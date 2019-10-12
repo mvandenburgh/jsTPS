@@ -3,6 +3,7 @@ var currentTrial;
 
 testAdd();
 testAndMask();
+testOrMask();
 
 function testAdd() {
     startTest("testAdd");
@@ -52,11 +53,30 @@ function testAndMask() {
     assertEquals(1, tps.getUndoSize());
 }
 
+function testOrMask() {
+    startTest("testOrMask");
+    let tps = new jsTPS;
+    let num = new Num();
+    assertEquals(0, num.getNum());
 
-function assertEquals(provided, expected) {
+    // ADD 5 TRANSACTION
+    tps.addTransaction(new AddToNum_Transaction(num, 12));
+    tps.addTransaction(new OrMask_Transaction(num, num.getNum(), 4));
+    assertEquals(12, num.getNum());
+    assertEquals(2, tps.getSize());
+
+    tps.undoTransaction();
+    assertEquals(12, num.getNum());
+    assertEquals(2, tps.getSize());
+    assertEquals(1, tps.getRedoSize());
+    assertEquals(1, tps.getUndoSize());
+}
+
+
+function assertEquals(expected, provided) {
     console.log(currentTest + currentTrial);
-    console.log("provided: " + provided);
     console.log("expected: " + expected);
+    console.log("actual: " + provided);
     let elem = document.getElementById(currentTest + currentTrial);
     provided === expected ? setPassed(elem) : setFailed(elem);
     currentTrial++;
