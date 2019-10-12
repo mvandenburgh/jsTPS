@@ -6,6 +6,7 @@ testAndMask();
 testOrMask();
 testUndo();
 testRedo();
+testClear();
 
 function testAdd() {
     startTest("testAdd");
@@ -210,6 +211,54 @@ function testRedo() {
     assertTrue(tps.hasTransactionToUndo());
     assertFalse(tps.hasTransactionToRedo());
     assertEquals(35, num.getNum());
+    assertEquals(3, tps.getSize());
+    assertEquals(0, tps.getRedoSize());
+    assertEquals(3, tps.getUndoSize());
+}
+
+function testClear() {
+    startTest("testClear");
+    let tps = new jsTPS();
+    let num = new Num();
+    assertEquals(num.getNum(), 0);
+
+    // ADD 3 TRANSACTIONS (5, 10, and 15)
+    tps.addTransaction(new AddToNum_Transaction(num, 5));
+    tps.addTransaction(new AddToNum_Transaction(num, 10));
+    tps.addTransaction(new AddToNum_Transaction(num, 20));
+    assertEquals(35, num.getNum());
+    assertEquals(3, tps.getSize());
+    assertEquals(0, tps.getRedoSize());
+    assertEquals(3, tps.getUndoSize());
+
+    // CLEAR ALL THE TRANSACTIONS
+    tps.clearAllTransactions();
+    assertEquals(35, num.getNum());
+    assertEquals(0, tps.getSize());
+    assertEquals(0, tps.getRedoSize());
+    assertEquals(0, tps.getUndoSize());
+
+    // ADD 3 TRANSACTIONS (5, 10, and 15)
+    tps.addTransaction(new AddToNum_Transaction(num, 5));
+    tps.addTransaction(new AddToNum_Transaction(num, 10));
+    tps.addTransaction(new AddToNum_Transaction(num, 20));
+    assertEquals(70, num.getNum());
+    assertEquals(3, tps.getSize());
+    assertEquals(0, tps.getRedoSize());
+    assertEquals(3, tps.getUndoSize());
+
+    // CLEAR THEM ALL OUT AGAIN
+    tps.clearAllTransactions();
+    assertEquals(70, num.getNum());
+    assertEquals(0, tps.getSize());
+    assertEquals(0, tps.getRedoSize());
+    assertEquals(0, tps.getUndoSize());
+
+    // ADD 3 TRANSACTIONS (5, 10, and 15)
+    tps.addTransaction(new AddToNum_Transaction(num, 5));
+    tps.addTransaction(new AddToNum_Transaction(num, 10));
+    tps.addTransaction(new AddToNum_Transaction(num, 20));
+    assertEquals(105, num.getNum());
     assertEquals(3, tps.getSize());
     assertEquals(0, tps.getRedoSize());
     assertEquals(3, tps.getUndoSize());

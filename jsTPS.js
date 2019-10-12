@@ -124,7 +124,7 @@ class jsTPS {
      * of the top of the stack.
      */
     clearAllTransactions() {
-        this.transactions.clear();
+        this.transactions = [];
 
         this.mostRecentTransaction = -1;
     }
