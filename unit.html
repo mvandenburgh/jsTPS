@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jsTPS Unit Tests</title>
+</head>
+
+<body>
+    <div id="testAdd">
+        <h2>Testing Add</h2>
+        <div>Test default num value: <span id="testAdd1"></span></div>
+        <h5>ADD 5 TRANSACTION</h5>
+        <div>Test num value: <span id="testAdd2"></span></div>
+        <div>Test tps size: <span id="testAdd3"></span></div>
+        <div>Test tps redo size: <span id="testAdd4"></span></div>
+        <div>Test tps undo size: <span id="testAdd5"></span></div>
+        <h5>ADD 10 TRANSACTION</h5>
+        <div>Test num value: <span id="testAdd6"></span></div>
+        <div>Test tps size: <span id="testAdd7"></span></div>
+        <div>Test tps redo size: <span id="testAdd8"></span></div>
+        <div>Test tps undo size: <span id="testAdd9"></span></div>
+        <h5>ADD 15 TRANSACTION</h5>
+        <div>Test num value: <span id="testAdd10"></span></div>
+        <div>Test tps size: <span id="testAdd11"></span></div>
+        <div>Test tps redo size: <span id="testAdd12"></span></div>
+        <div>Test tps undo size: <span id="testAdd13"></span></div>
+    </div>
+
+    <div id="testAndMask">
+        <h2>Testing AndMask</h2>
+        <div>Test default num value: <span id="testAndMask1"></span></div>
+        <h5>ADD 5 TRANSACTION</h5>
+        <div>Test num value: <span id="testAndMask2"></span></div>
+        <div>Test tps size: <span id="testAndMask3"></span></div>
+        <h5>UNDO A TRANSACTION</h5>
+        <div>Test num value: <span id="testAndMask4"></span></div>
+        <div>Test tps size: <span id="testAndMask5"></span></div>
+        <div>Test tps redo size: <span id="testAndMask6"></span></div>
+        <div>Test tps undo size: <span id="testAndMask7"></span></div>
+    </div>
+
+    <div id="testOrMask">
+        <h2>Testing OrMask</h2>
+        <div>Test default num value: <span id="testOrMask1"></span></div>
+        <h5>ADD 5 TRANSACTION</h5>
+        <div>Test num value: <span id="testOrMask2"></span></div>
+        <div>Test tps size: <span id="testOrMask3"></span></div>
+        <h5>UNDO A TRANSACTION</h5>
+        <div>Test num value: <span id="testOrMask4"></span></div>
+        <div>Test tps size: <span id="testOrMask5"></span></div>
+        <div>Test tps redo size: <span id="testOrMask6"></span></div>
+        <div>Test tps undo size: <span id="testOrMask7"></span></div>
+    </div>
+
+    <div id="testUndo">
+        <h2>Testing Undo</h2>
+        <div>Test tps default num value: <span id="testUndo1"></span></div>
+        <div>Test tps default hasUndo: <span id="testUndo2"></span></div>
+        <div>Test tps default hasRedo: <span id="testUndo3"></span></div>
+        <h5>ADD 3 TRANSACTIONS (5, 10, and 15)</h5>
+        <div>Test tps hasUndo: <span id="testUndo4"></span></div>
+        <div>Test tps hasRedo: <span id="testUndo5"></span></div>
+        <div>Test num value: <span id="testUndo6"></span></div>
+        <div>Test tps hasUndo: <span id="testUndo7"></span></div>
+        <div>Test tps size: <span id="testUndo8"></span></div>
+        <div>Test tps redoSize: <span id="testUndo9"></span></div>
+        <div>Test tps undoSize: <span id="testUndo10"></span></div>
+        <h5>UNDO A TRANSACTION</h5>
+        <div>Test tps hasUndo: <span id="testUndo11"></span></div>
+        <div>Test tps hasRedo: <span id="testUndo12"></span></div>
+        <div>Test num value: <span id="testUndo13"></span></div>
+        <div>Test tps size: <span id="testUndo14"></span></div>
+        <div>Test tps redoSize: <span id="testUndo15"></span></div>
+        <div>Test tps undoSize: <span id="testUndo16"></span></div>
+        <h5>UNDO ANOTHER</h5>
+        <div>Test tps hasUndo: <span id="testUndo17"></span></div>
+        <div>Test tps hasRedo: <span id="testUndo18"></span></div>
+        <div>Test num value: <span id="testUndo19"></span></div>
+        <div>Test tps size: <span id="testUndo20"></span></div>
+        <div>Test tps redoSize: <span id="testUndo21"></span></div>
+        <div>Test tps undoSize: <span id="testUndo22"></span></div>
+        <h5>AND ANOTHER</h5>
+        <div>Test tps hasUndo: <span id="testUndo23"></span></div>
+        <div>Test tps hasRedo: <span id="testUndo24"></span></div>
+        <div>Test num value: <span id="testUndo25"></span></div>
+        <div>Test tps size: <span id="testUndo26"></span></div>
+        <div>Test tps redoSize: <span id="testUndo27"></span></div>
+        <div>Test tps undoSize: <span id="testUndo28"></span></div>
+        <h5>UNDO ANOTHER. WE HAVE NO MORE TO UNDO SO THIS SHOULD DO NOTHING</h5>
+        <div>Test tps hasUndo: <span id="testUndo29"></span></div>
+        <div>Test tps hasRedo: <span id="testUndo30"></span></div>
+        <div>Test num value: <span id="testUndo31"></span></div>
+        <div>Test tps size: <span id="testUndo32"></span></div>
+        <div>Test tps redoSize: <span id="testUndo33"></span></div>
+        <div>Test tps undoSize: <span id="testUndo34"></span></div>
+    </div>
+
+    <div id="testredo">
+        <h2>Testing Redo</h2>
+        <div>Test tps default num value: <span id="testredo1"></span></div>
+        <h5>ADD 3 TRANSACTIONS (5, 10, and 15)</h5>
+        <div>Test tps hasUndo: <span id="testredo2"></span></div>
+        <div>Test tps hasRedo: <span id="testredo3"></span></div>
+        <div>Test num value: <span id="testredo4"></span></div>
+        <div>Test tps size: <span id="testredo5"></span></div>
+        <div>Test tps redoSize: <span id="testredo6"></span></div>
+        <div>Test tps undoSize: <span id="testredo7"></span></div>
+        <h5>UNDO A TRANSACTION AND THEN REDO IT</h5>
+        <div>Test tps hasundo: <span id="testredo8"></span></div>
+        <div>Test tps hasRedo: <span id="testredo9"></span></div>
+        <div>Test num value: <span id="testredo10"></span></div>
+        <div>Test tps size: <span id="testredo11"></span></div>
+        <div>Test tps redoSize: <span id="testredo12"></span></div>
+        <div>Test tps redoSize: <span id="testredo13"></span></div>
+        <h5>UNDO TWO TRANSACTIONS AND THEN REDO THEM</h5>
+        <div>Test tps hasUndo: <span id="testredo14"></span></div>
+        <div>Test tps hasRedo: <span id="testredo15"></span></div>
+        <div>Test num value: <span id="testredo16"></span></div>
+        <div>Test tps size: <span id="testredo17"></span></div>
+        <div>Test tps redoSize: <span id="testredo18"></span></div>
+        <div>Test tps undoSize: <span id="testredo19"></span></div>
+        <h5>UNDO ALL THREE TRANSACTIONS AND REDO THEM</h5>
+        <div>Test tps hasUndo: <span id="testredo20"></span></div>
+        <div>Test tps hasRedo: <span id="testredo21"></span></div>
+        <div>Test num value: <span id="testredo22"></span></div>
+        <div>Test tps size: <span id="testredo23"></span></div>
+        <div>Test tps redoSize: <span id="testredo24"></span></div>
+        <div>Test tps redoSize: <span id="testredo25"></span></div>
+        <h5>UNDO THREE TRANSACTIONS AND REDO TWO</h5>
+        <div>Test tps hasUndo: <span id="testredo26"></span></div>
+        <div>Test tps hasRedo: <span id="testredo27"></span></div>
+        <div>Test num value: <span id="testredo28"></span></div>
+        <div>Test tps size: <span id="testredo29"></span></div>
+        <div>Test tps redoSize: <span id="testredo30"></span></div>
+        <div>Test tps undoSize: <span id="testredo31"></span></div>
+        <h5>UNDO ALL THREE TRANSACTIONS AND REDO FOUR, WHICH<br>SHOULD NOT PRODUCE AN ERROR BUT THE LAST<br>REDO SHOULD
+            DO NOTHING</h5>
+        <div>Test tps hasUndo: <span id="testredo32"></span></div>
+        <div>Test tps hasRedo: <span id="testredo33"></span></div>
+        <div>Test num value: <span id="testredo34"></span></div>
+        <div>Test tps size: <span id="testredo35"></span></div>
+        <div>Test tps redoSize: <span id="testredo36"></span></div>
+        <div>Test tps undoSize: <span id="testredo37"></span></div>
+    </div>
+
+    <div id="testClear">
+        <h2>Testing Clear</h2>
+        <div>Test tps default num value: <span id="testClear1"></span></div>
+        <h5>ADD 3 TRANSACTIONS (5, 10, and 15)</h5>
+        <div>Test num value: <span id="testClear2"></span></div>
+        <div>Test tps size: <span id="testClear3"></span></div>
+        <div>Test tps redo size: <span id="testClear4"></span></div>
+        <div>Test tps undo size: <span id="testClear5"></span></div>
+        <h5>CLEAR ALL THE TRANSACTIONS</h5>
+        <div>Test num value: <span id="testClear6"></span></div>
+        <div>Test tps size: <span id="testClear7"></span></div>
+        <div>Test tps redo size: <span id="testClear8"></span></div>
+        <div>Test tps undo size: <span id="testClear9"></span></div>
+        <h5>ADD 3 TRANSACTIONS (5, 10, and 15)</h5>
+        <div>Test num value: <span id="testClear10"></span></div>
+        <div>Test tps size: <span id="testClear11"></span></div>
+        <div>Test tps redo size: <span id="testClear12"></span></div>
+        <div>Test tps undo size: <span id="testClear13"></span></div>
+        <h5>CLEAR THEM ALL OUT AGAIN</h5>
+        <div>Test num value: <span id="testClear14"></span></div>
+        <div>Test tps size: <span id="testClear15"></span></div>
+        <div>Test tps redo size: <span id="testClear16"></span></div>
+        <div>Test tps undo size: <span id="testClear17"></span></div>
+        <h5>ADD 3 TRANSACTIONS (5, 10, and 15)</h5>
+        <div>Test num value: <span id="testClear18"></span></div>
+        <div>Test tps size: <span id="testClear19"></span></div>
+        <div>Test tps redo size: <span id="testClear20"></span></div>
+        <div>Test tps undo size: <span id="testClear21"></span></div>
+        
+    </div>
+
+
+    <script src="jsTPS.js"></script>
+    <script src="js/unit/Num.js"></script>
+    <script src="js/unit/AddToNum_Transaction.js"></script>
+    <script src="js/unit/AndMask_Transaction.js"></script>
+    <script src="js/unit/OrMask_Transaction.js"></script>
+    <script src="js/unit/Unit_Tests.js"></script>
+</body>
+
+</html>
