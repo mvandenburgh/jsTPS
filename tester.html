@@ -3,13 +3,47 @@
 
 <head>
     <title>jsTPS User Tester</title>
+    <link rel="stylesheet" href="./css/tester.css">
 </head>
 
-<body>
-    <form>
-        <label for="in">Value: </label>
-        <input type="text" id="in">
-    </form>
+<body style="font-size: 1.5em">
+    <div id="container">
+        <div>num is <span id="numIs"></span></div>
+        <div id="form">
+            <!-- <form> -->
+                <br><br>
+                <label for="in">Value: </label>
+                <input type="text" id="in">
+                <br><br>
+                <button id="addbtn">Add Transaction</button>
+                <!-- <button id="andbtn">AndMask Transaction</button>
+                <button id="orbtn">OrMask Transaction</button> -->
+                
+                <button id="undobtn">Undo a Transaction</button>
+                <button id="redobtn">Redo a Transaction</button>
+                <button id="clearbtn">Clear All Transactions</button>
+                <button id="resetbtn">Reset Num and Transactions</button>
+            <!-- </form> -->
+        </div>
+
+        <div id="current"><br>
+            CURRENT jsTPS:
+            <div>--Number of Transactions: <span id="numTrans"></span></div>
+            <div>--Current Index on Stack: <span id="indStack"></span></div>
+            <div>--Current Transaction Stack:
+                <table id="stack">
+                </table>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="jsTPS.js"></script>
+    <script src="js/unit/Num.js"></script>
+    <script src="js/unit/AddToNum_Transaction.js"></script>
+    <script src="js/unit/AndMask_Transaction.js"></script>
+    <script src="js/unit/OrMask_Transaction.js"></script>
+    <script src="js/demo/tester.js"></script>
 </body>
 
 </html>
