@@ -3,7 +3,7 @@ var num = new Num();
 var numIs = document.getElementById("numIs");
 var inForm = document.getElementById("in");
 var stack = document.getElementById("stack");
-numIs.innerHTML = num.getNum();
+update();
 
 document.getElementById("addbtn").addEventListener("click", function () {
     if (inForm.value.trim() !== "") {
@@ -63,4 +63,6 @@ document.getElementById("resetbtn").addEventListener("click", function () {
 
 function update() {
     numIs.innerHTML = num.getNum();
+    document.getElementById("numTrans").innerHTML = tps.getSize();
+    document.getElementById("indStack").innerHTML = tps.mostRecentTransaction;
 }
